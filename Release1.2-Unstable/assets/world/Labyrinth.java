@@ -17,12 +17,6 @@ public class Labyrinth extends World{
 
 //Coolio Methods
 	public void print(String s){System.out.println(s);}
-	public static void clrConsole(){System.out.print("\033\143");}
-	public void pauseSleep(int n){
-		try{
-			Thread.sleep(n);
-		} catch(Exception e){}
-	}
         public int getStage() {return super.stage;}
         public void setStage(int n) {super.stage = n;}
 

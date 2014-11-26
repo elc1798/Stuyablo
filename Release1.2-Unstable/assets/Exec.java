@@ -3,30 +3,6 @@ import java.io.*;
 
 public class Exec{
 
-	public static void titleScreen(){
-		Labyrinth.clrConsole();
-		System.out.println("                                                                              ");
-		System.out.println(" @@@@@@   @@@@@@@  @@@  @@@  @@@ @@@   @@@@@@   @@@@@@@   @@@        @@@@@@   ");
-		System.out.println("@@@@@@@   @@@@@@@  @@@  @@@  @@@ @@@  @@@@@@@@  @@@@@@@@  @@@       @@@@@@@@  ");
-		System.out.println("!@@         @@!    @@!  @@@  @@! !@@  @@!  @@@  @@!  @@@  @@!       @@!  @@@  ");
-		System.out.println("!@!         !@!    !@!  @!@  !@! @!!  !@!  @!@  !@   @!@  !@!       !@!  @!@  ");
-		System.out.println("!!@@!!      @!!    @!@  !@!   !@!@!   @!@!@!@!  @!@!@!@   @!!       @!@  !@!  ");
-		System.out.println(" !!@!!!     !!!    !@!  !!!    @!!!   !!!@!!!!  !!!@!!!!  !!!       !@!  !!!  ");
-		System.out.println("     !:!    !!:    !!:  !!!    !!:    !!:  !!!  !!:  !!!  !!:       !!:  !!!  ");
-		System.out.println("    !:!     :!:    :!:  !:!    :!:    :!:  !:!  :!:  !:!  :!:       :!:  !:!  ");
-		System.out.println(":::::::      ::    ::::: ::     ::    ::   :::  ::: ::::  :: ::::   ::::::::  ");
-		System.out.println("::::::       :      : :  :      :     ::   : :  :::::::   : :: ::    ::::::   ");
-		System.out.println("");
-		System.out.println("                       Tale of the Land of R' Meot");
-		//Easter egg! R 'Meot = Rm EOT = Rm 307
-		System.out.println("");
-		System.out.println("OpenSource Software, Created by Ethan Cheng");
-		System.out.println("Press Enter to continue...");
-		try {
-			System.in.read();
-		} catch(Exception e){e.printStackTrace();}
-	}
-
 	public static void newGame(){
 		Labyrinth.clrConsole();
 		BaseChar Harry = new BaseChar();
