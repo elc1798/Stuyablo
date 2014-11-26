@@ -41,17 +41,32 @@ public class GameController{
 		BaseChar temp = new BaseChar();
 		System.out.println("Character generation! Your party will consist of 5 characters.");
 		for (int i = 1; i < 6; i++){
-			GameController.clrConsole();
 			System.out.println("Classes:\n==================================");
+			System.out.println("\n1 / Warrior:");
 			temp.warriorTemplate("TEMP");
 			temp.displayStats();
+			System.out.println("\n2 / Mage: ");
 			temp.mageTemplate("TEMP");
 			temp.displayStats();
+			System.out.println("\n3 / Archer: ");
 			temp.archerTemplate("TEMP");
 			temp.displayStats();
+			System.out.println("\n4 / Dwarf: ");
 			temp.dwarfTemplate("TEMP");
 			temp.displayStats();
-			System.out.println("Choose your class
+			System.out.println("\nChoose your class! See above for choices.");
+			String usrInput = stdInput.nextLine().toUpperCase() + "@@@@@@@@@@@@@@@@@@@@"; //20 Character buffer to prevent out of bounds
+			if (usrInput.substring(0 , 7).equals("WARRIOR") || usrInput.charAt(0) == '1'){
+
+			} else if (userInput.substring(0 , 4).equals("MAGE") || userInput.charAt(0) == '2'){
+
+			} else if (userInput.substring(0 , 6).equals("ARCHER") || userInput.charAt(0) == '3'){
+
+			} else if (userInput.substring(0 , 5).equals("DWARF") || userInput.charAt(0) == '4'){
+
+			} else {
+				i--;
+			}
 		}
 	}
 }
