@@ -38,9 +38,19 @@ public class GameController{
 	}
 
 	public static BaseChar[] crtCharacter(){
+		BaseChar temp = new BaseChar();
 		System.out.println("Character generation! Your party will consist of 5 characters.");
 		for (int i = 1; i < 6; i++){
-			
+			GameController.clrConsole();
+			System.out.println("Classes:\n==================================");
+			temp.warriorTemplate("TEMP");
+			temp.displayStats();
+			temp.mageTemplate("TEMP");
+			temp.displayStats();
+			temp.archerTemplate("TEMP");
+			temp.displayStats();
+			temp.dwarfTemplate("TEMP");
+			temp.displayStats();
 			System.out.println("Choose your class
 		}
 	}
