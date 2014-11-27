@@ -31,24 +31,24 @@ public class Labyrinth extends World{
 			Monster drag = new Monster();
 			drag.DRAGONTemplate("Ebonmaw, the Wicked Dragon" , 1);
 			System.out.print("You enter a room...");
-			pauseSleep(900);
+			GameController.pauseSleep(900);
 			System.out.println(" It seems to be empty...");
-			pauseSleep(900);
+			GameController.pauseSleep(900);
 			System.out.println("~ I am Ebonmaw... ~");
-			pauseSleep(900);
+			GameController.pauseSleep(900);
 			System.out.println("THE DRAGON LORD!");
-			pauseSleep(500);
+			GameController.pauseSleep(500);
 			System.out.println("Ebonmaw, the Wicked Dragon crashed down from the ceiling!");
 			Battle boss1 = new Battle(player , drag , getStage());
 			if (drag.health() <= 0) {
 				System.out.println("You have vanquished the Wicked Dragon!");
-				pauseSleep(1300);
+				GameController.pauseSleep(1300);
 				System.out.println("... You look around his fallen body and see his scales lying around... ");
-				pauseSleep(1500);
+				GameController.pauseSleep(1500);
 				Scanner dragChoice = new Scanner(System.in);
 				System.out.println("What do you make? A sword? A shield? Armor?");
 				System.out.println("~A helpful sparrow says~ : Enter sword, shield, or armor!");
-				System.out.println("Sword grants strength! Shield grants dexterity! Armor grants health!");
+				System.out.println("Sword grants strength! Shield grants endurance! Armor grants health!");
 				System.out.println("~The helpful sparrow flies away~");
 				boolean chosen = false;
 				while (!chosen){
@@ -59,8 +59,8 @@ public class Labyrinth extends World{
 						chosen = true;
 					}
 					else if (resp.toUpperCase().equals("SHIELD")){
-						player.setDexterity(player.dexterity() + 10);
-						System.out.println("You have gained 10 dexterity!");
+						player.setEndurance(player.endurance() + 10);
+						System.out.println("You have gained 10 endurance!");
 						chosen = true;
 					}
 					else if (resp.toUpperCase().equals("ARMOR")){
@@ -80,42 +80,42 @@ public class Labyrinth extends World{
 			Monster pred = new Monster();
 			pred.PREDATORTemplate("Rangor, the Esteemed Hunter" , 1);
 			System.out.println("*shuffle swish shuffle swoosh*");
-			pauseSleep(400);
+			GameController.pauseSleep(400);
 			System.out.println("... What was that?");
-			pauseSleep(1000);
+			GameController.pauseSleep(1000);
 			System.out.println("*swoosh!*");
 			System.out.println("...!");
-			pauseSleep(400);
+			GameController.pauseSleep(400);
 			System.out.println("A knife barely misses your head!");
-			pauseSleep(500);
+			GameController.pauseSleep(500);
 			System.out.println("I am Rangor... You are my prey...");
-			pauseSleep(1000);
+			GameController.pauseSleep(1000);
 			Battle boss2 = new Battle(player , pred , getStage());
 			System.out.println("You have vanquished Rangor, the Esteemed Hunter...");
-			pauseSleep(1000);
+			GameController.pauseSleep(1000);
 			System.out.print("...");
-			pauseSleep(1500);
+			GameController.pauseSleep(1500);
 			System.out.println("The head of Rangor begins to glow...");
-			pauseSleep(1000);
+			GameController.pauseSleep(1000);
 			System.out.println("He bestows you with the gift of Ferocity:");
 			System.out.println("+ 10 Strength");
 			System.out.println("+ 10 Speed");
 			player.setStrength(player.strength() + 10);
 			player.setSpeed(player.speed() + 10);
-			pauseSleep(1300);
+			GameController.pauseSleep(1300);
 			setStage(getStage() + 1);
 		}
 		else if (getStage() == 199){
 			Monster gate = new Monster();
 			gate.GATEKEEPERTemplate("Zim 'Ann Skior, the Dungeon Master" , 1);
 			System.out.println("You dare try to escape MY dungeon?");
-			pauseSleep(750);
+			GameController.pauseSleep(750);
 			System.out.println("Foolish mortal...");
-			pauseSleep(500);
+			GameController.pauseSleep(500);
 			System.out.println("*A beam of light appears!*");
-			pauseSleep(750);
+			GameController.pauseSleep(750);
 			System.out.println("You will never escape...");
-			pauseSleep(600);
+			GameController.pauseSleep(600);
 			Battle boss3 = new Battle(player , gate , getStage());
 			setStage(getStage() + 1);
 		}
@@ -170,7 +170,7 @@ public class Labyrinth extends World{
 					save.writeObject(player.health());
 					save.writeObject(player.strength());
 					save.writeObject(player.speed());
-					save.writeObject(player.dexterity());
+					save.writeObject(player.endurance());
 					save.writeObject(super.stage);
 					save.writeObject(player.type());
 					save.writeObject(currRm.room);
@@ -219,11 +219,11 @@ public class Labyrinth extends World{
 					chosen = true;
                                 } catch(Exception e){System.out.println("Invalid value. Please use an int");}
 			}
-                        else if (response.toUpperCase().equals("SETDEXTERITY") && devmd) {
+                        else if (response.toUpperCase().equals("SETENDURANCE") && devmd) {
                                 Scanner devconsole = new Scanner(System.in);
                                 System.out.print(" $ Value: ");
                                 try {
-                                        player.setDexterity((int)(devconsole.nextInt()));
+                                        player.setEndurance((int)(devconsole.nextInt()));
                                 } catch(Exception e){System.out.println("Invalid value. Please use an int");}
                         }
                         else if (response.toUpperCase().equals("SETSPEED") && devmd) {
@@ -261,7 +261,7 @@ public class Labyrinth extends World{
                         System.out.println("You have levelled up!");
                         player.setStrength(player.strength() + 2);
                         player.setSpeed(player.speed() + 1);
-                        player.setDexterity(player.dexterity() + 2);
+                        player.setEndurance(player.endurance() + 2);
                         player.setMaxHealth(player.maxHealth() + 15);
                 }
                 player.setHealth(player.maxHealth());

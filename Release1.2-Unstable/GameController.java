@@ -37,11 +37,15 @@ public class GameController{
 		} catch(Exception e){}
 	}
 
-	public static BaseChar[] crtCharacter(){
+	public static BaseChar[] crtParty(){
+
 		BaseChar temp = new BaseChar();
 		BaseChar[] party = new BaseChar[5];
 		boolean answerRecieved = false;
+		String nameBuffer = "TEMP";
+
 		System.out.println("Character generation! Your party will consist of 5 characters.");
+
 		for (int i = 1; i < 6; i++){
 			System.out.println("Classes:\n==================================");
 			System.out.println("\n1 / Warrior:");
@@ -57,15 +61,19 @@ public class GameController{
 			temp.dwarfTemplate("TEMP");
 			temp.displayStats();
 			System.out.print("\nChoose your class! See above for choices.");
+
 			String usrInput = stdInput.nextLine().toUpperCase() + "@@@@@@@@@@@@@@@@@@@@"; //20 Character buffer to prevent out of bounds
+
 			if (usrInput.substring(0 , 7).equals("WARRIOR") || usrInput.charAt(0) == '1'){
 				System.out.print("Name your warrior!\nName: ");
 				while (!answerRecieved){
-					try {
-						temp.warriorTemplate(stdInput.nextLine());
+					nameBuffer = stdInput.nextLine();
+					if (nameBuffer.length() > 0) {
+						temp.warriorTemplate("TEMP");
+						temp.setName(nameBuffer);
 						answerRecieved = true;
 						party[i] = temp;
-					} catch(Exception e){
+					} else {
 						System.out.println("Invalid name!");
 					}
 				}
@@ -73,11 +81,13 @@ public class GameController{
 			} else if (usrInput.substring(0 , 4).equals("MAGE") || usrInput.charAt(0) == '2'){
 				System.out.print("Name your mage!\nName: ");
 				while (!answerRecieved){
-					try {
-						temp.mageTemplate(stdInput.nextLine());
+					nameBuffer = stdInput.nextLine();
+					if (nameBuffer.length() > 0) {
+						temp.mageTemplate("TEMP");
+						temp.setName(nameBuffer);
 						answerRecieved = true;
 						party[i] = temp;
-					} catch(Exception e){
+					} else {
 						System.out.println("Invalid name!");
 					}
 				}
@@ -85,11 +95,13 @@ public class GameController{
 			} else if (usrInput.substring(0 , 6).equals("ARCHER") || usrInput.charAt(0) == '3'){
 				System.out.print("Name your archer!\nName: ");
 				while (!answerRecieved){
-					try {
-						temp.archerTemplate(stdInput.nextLine());
+					nameBuffer = stdInput.nextLine();
+					if (nameBuffer.length() > 0) {
+						temp.archerTemplate("TEMP");
+						temp.setName(nameBuffer);
 						answerRecieved = true;
 						party[i] = temp;
-					} catch(Exception e){
+					} else {
 						System.out.println("Invalid name!");
 					}
 				}
@@ -97,11 +109,13 @@ public class GameController{
 			} else if (usrInput.substring(0 , 5).equals("DWARF") || usrInput.charAt(0) == '4'){
 				System.out.print("Name your dwarf!\nName: ");
 				while (!answerRecieved){
-					try {
-						temp.dwarfTemplate(stdInput.nextLine());
+					nameBuffer = stdInput.nextLine();
+					if (nameBuffer.length() > 0) {
+						temp.dwarfTemplate("TEMP");
+						temp.setName(nameBuffer);
 						answerRecieved = true;
 						party[i] = temp;
-					} catch(Exception e){
+					} else {
 						System.out.println("Invalid name!");
 					}
 				}

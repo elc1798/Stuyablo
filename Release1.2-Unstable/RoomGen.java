@@ -112,74 +112,74 @@ public class RoomGen{
 						System.out.println("You have gained " + x + " health!");
 						localCH.setMaxHealth(localCH.maxHealth() + x);
 						localCH.setHealth(localCH.maxHealth());
-						gameHost.pauseSleep(2000);
-						Labyrinth.clrConsole();
+						GameController.pauseSleep(2000);
+						GameController.clrConsole();
 						break;
 					case 1:
 						System.out.println("You have found a Potion of Vorocity!");
 						x = amount.nextInt(5) + 5;
 						System.out.println("You have gained " + x + " strength!");
 						localCH.setStrength(localCH.strength() + x);
-                                                gameHost.pauseSleep(2000);
-                                                Labyrinth.clrConsole();
+                                                GameController.pauseSleep(2000);
+                                                GameController.clrConsole();
 						break;
 					case 2:
 						System.out.println("You have found a Potion of Will!");
 						x = amount.nextInt(10) + 3;
-						System.out.println("You have gained " + x + " dexterity!");
-						localCH.setDexterity(localCH.dexterity() + x);
-                                                gameHost.pauseSleep(2000);
-                                                Labyrinth.clrConsole();
+						System.out.println("You have gained " + x + " endurance!");
+						localCH.setEndurance(localCH.endurance() + x);
+                                                GameController.pauseSleep(2000);
+                                                GameController.clrConsole();
 						break;
 					case 3:
 						System.out.println("You have found a Potion of Alacrity!");
 						x = amount.nextInt(3) + 3;
 						System.out.println("You have gained " + x + " speed!");
 						localCH.setSpeed(localCH.speed() + x);
-                                                gameHost.pauseSleep(2000);
-                                                Labyrinth.clrConsole();
+                                                GameController.pauseSleep(2000);
+                                                GameController.clrConsole();
 						break;
 					case 4:
 						System.out.println("A mist of ailment comes out of the chest!");
 						localCH.setMaxHealth(localCH.maxHealth() - 10);
 						localCH.setHealth(localCH.maxHealth());
 						System.out.println("Your health has been decreased!");
-                                                gameHost.pauseSleep(2000);
-                                                Labyrinth.clrConsole();
+                                                GameController.pauseSleep(2000);
+                                                GameController.clrConsole();
 						break;
 					case 5:
 						System.out.println("A mist of weakness comes out of the chest!");
 						localCH.setStrength(localCH.strength() - 3);
 						System.out.println("Your strength has been decreased.");
-                                                gameHost.pauseSleep(2000);
-                                                Labyrinth.clrConsole();
+                                                GameController.pauseSleep(2000);
+                                                GameController.clrConsole();
 						break;
 					case 6:
 						System.out.println("A mist of slowness comes out of the chest!");
 						localCH.setSpeed(localCH.speed() - 3);
 						System.out.println("Your speed has been decreased.");
-                                                gameHost.pauseSleep(2000);
-                                                Labyrinth.clrConsole();
+                                                GameController.pauseSleep(2000);
+                                                GameController.clrConsole();
 						break;
 					case 7:
 						System.out.println("A mist of deterioration comes out of the chest!");
-						localCH.setDexterity(localCH.dexterity() - 4);
-						System.out.println("Your dexterity has been decreased.");
-                                                gameHost.pauseSleep(2000);
-                                                Labyrinth.clrConsole();
+						localCH.setEndurance(localCH.endurance() - 4);
+						System.out.println("Your endurance has been decreased.");
+                                                GameController.pauseSleep(2000);
+                                                GameController.clrConsole();
 						break;
 					default:
 						System.out.println("You have found a glorious empty bottle.");
-                                                gameHost.pauseSleep(2000);
-                                                Labyrinth.clrConsole();
+                                                GameController.pauseSleep(2000);
+                                                GameController.clrConsole();
 						break;
 				}
 				chestChosen = true;
 			}
 			else if (chCh.toUpperCase().equals("NO") || chCh.toUpperCase().equals("N")){
 				System.out.println("You leave the chest alone.");
-                                gameHost.pauseSleep(2000);
-                                Labyrinth.clrConsole();
+                                GameController.pauseSleep(2000);
+                                GameController.clrConsole();
 				chestChosen = true;
 			}
 			else {

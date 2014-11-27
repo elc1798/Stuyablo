@@ -57,7 +57,7 @@ public class Battle extends World{
 			System.out.println("You have levelled up!");
 			victor.setStrength(victor.strength() + 2);
 			victor.setSpeed(victor.speed() + 1);
-			victor.setDexterity(victor.dexterity() + 2);
+			victor.setEndurance(victor.endurance() + 2);
 			victor.setMaxHealth(victor.maxHealth() + 15);
 		}
 		victor.setHealth(victor.maxHealth());
@@ -68,10 +68,6 @@ public class Battle extends World{
 	}
 
 	public void endScreenBaseChar(BaseChar loser){
-//		try{
-//                        Thread.sleep(1750);
-//                } catch(Exception e) {}
-//                System.out.print("\033\143");
 		System.out.println("*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*");
 		System.out.println("You have died... Your story has ended.");
 		System.out.println("You ended the game with: ");
@@ -82,18 +78,6 @@ public class Battle extends World{
 		System.out.println("Game exitting... You can respawn from your save file.");
 		System.exit(0);
 	}
-/*
-	public void attack1(BaseChar attacker, Monster defender){
-		System.out.println(attacker.name + " is attacking " + defender.name);
-		int damageTaken = (int)(Math.random() * 10000) % attacker.strength - (defender.dexterity / 5);
-		defender.setHealth(defender.health - damageTaken);
-		System.out.println(defender.name + " lost " + damageTaken + " health.");
-		if (defender.health <= 0) {
-			endScreenMonster(attacker);
-		}
-	}
-*/
-
 
 	public void attack1(BaseChar attacker , Monster defender){
 		System.out.flush();
@@ -117,7 +101,7 @@ public class Battle extends World{
                         switch (response) {
 				case 1:
 					if (chance > defender.speed() - 5) {
-						int damageTaken = (int)(Math.random() * 100000) % attacker.strength() - (defender.dexterity / 5);
+						int damageTaken = (int)(Math.random() * 100000) % attacker.strength() - (defender.endurance / 5);
 						damageTaken = Math.abs(damageTaken) + attacker.level();
 						defender.setHealth(defender.health - damageTaken);
 						System.out.println(defender.name + " lost " + damageTaken + " health.");
@@ -147,7 +131,7 @@ public class Battle extends World{
 					if (attacker.level() >= 3){
 						if (attacker.type.equals("WARRIOR")){
 							if (chance > defender.speed()) {
-	                                                	int damageTaken = Math.abs((int)(Math.random() * 100000) % (attacker.level * 12) - (defender.dexterity / 5));
+	                                                	int damageTaken = Math.abs((int)(Math.random() * 100000) % (attacker.level * 12) - (defender.endurance / 5));
 								damageTaken = damageTaken + attacker.level() * 3;
 	                                                	defender.setHealth(defender.health - damageTaken);
 								System.out.println("c===(=========>   Whirlwind blade!");
@@ -164,7 +148,7 @@ public class Battle extends World{
 						}
 						else if (attacker.type.equals("MAGE")){
 							if (chance > defender.speed()) {
-	                                                	int damageTaken = Math.abs((int)(Math.random() * 100000) % (int)(attacker.level * 10 + attacker.strength * 0.5) - (defender.dexterity / 5));
+	                                                	int damageTaken = Math.abs((int)(Math.random() * 100000) % (int)(attacker.level * 10 + attacker.strength * 0.5) - (defender.endurance / 5));
 	                                                	damageTaken = damageTaken + attacker.level() * 2 + attacker.strength();
 								defender.setHealth(defender.health - damageTaken);
 								System.out.println("o-z-z-o-z-o-o-o-z-zo-zo-o-z Lightning fire storm!");
@@ -181,7 +165,7 @@ public class Battle extends World{
 						}
 						else if (attacker.type.equals("ARCHER")){
 							if (chance > defender.speed()) {
-	                                                	int damageTaken = (int)(Math.random() * 100000) % (attacker.speed * 3) - (defender.dexterity / 5);
+	                                                	int damageTaken = (int)(Math.random() * 100000) % (attacker.speed * 3) - (defender.endurance / 5);
 								damageTaken = Math.abs(damageTaken) + (int)(attacker.level() * 1.5) + (int)(attacker.speed() / 2);
 								defender.setHealth(defender.health - damageTaken);
 								System.out.println("#~~~~~~~~=~~~~~~~~> Enchanted arrow!");
@@ -198,14 +182,14 @@ public class Battle extends World{
 						}
 						else if (attacker.type.equals("DWARF")){
 							if (chance > defender.speed()) {
-	                                                	int damageTaken = (int)(Math.random() * 100000) % (int)(attacker.maxHealth() / 3 + attacker.dexterity) - (defender.dexterity / 5);
+	                                                	int damageTaken = (int)(Math.random() * 100000) % (int)(attacker.maxHealth() / 3 + attacker.endurance) - (defender.endurance / 5);
 	                                                	damageTaken = damageTaken + attacker.level() + attacker.strength();
 								damageTaken = Math.abs(damageTaken);
 								defender.setHealth(defender.health - damageTaken);
 								System.out.println(" -----) Wrath of the Pickaxe!");
 	                                                	System.out.println(defender.name + " lost " + damageTaken + " health.");
 								System.out.println("Special move penalty: Drunken rage hangover!");
-								int reflectDmg = (int)(attacker.dexterity() / 3 + damageTaken / 2);
+								int reflectDmg = (int)(attacker.endurance() / 3 + damageTaken / 2);
 								if (reflectDmg > 120){reflectDmg = 120;}
 								attacker.setHealth(attacker.health - reflectDmg);
 								System.out.println(attacker.name + " health: " + attacker.health + "/" + attacker.maxHealth);
@@ -235,11 +219,11 @@ public class Battle extends World{
                                         }
                                         checkResp = true;
 					break;
-/*				case 1337:
+				case 1337:
 					System.out.println("Cheat code activated!");
 					defender.setHealth(-9001);
 					break;
-*/				default:
+				default:
 					System.out.println("Invalid choice.");
 					break;
 			}
@@ -259,7 +243,7 @@ public class Battle extends World{
                 int chance = n.nextInt(100);
                 if (chance > defender.speed - 30) {
 			System.out.println(attacker.name + " is attacking " + defender.name);
-			int damageTaken = (int)(Math.random() * 10000) % attacker.strength - (defender.dexterity / 5);
+			int damageTaken = (int)(Math.random() * 10000) % attacker.strength - (defender.endurance / 5);
 			damageTaken = Math.abs(damageTaken) + (int)(gamestage / 3);
 			defender.setHealth(defender.health - damageTaken);
 			System.out.println(defender.name + " lost " + damageTaken + " health.");
@@ -273,7 +257,7 @@ public class Battle extends World{
 				System.out.println("Kobold grows in strength...");
 			}
 			if (attacker.name().toUpperCase().equals("GOLEM") && gamestage > 40) {
-				attacker.setDexterity(attacker.dexterity() + gamestage - 40);
+				attacker.setEndurance(attacker.endurance() + gamestage - 40);
 				System.out.println("Golem armor hardens...");
 			}
 			System.out.println(defender.name + " health: " + defender.health + "/" + defender.maxHealth);

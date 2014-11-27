@@ -10,7 +10,7 @@ public class Monster extends Mob{
 		super.level = l;
 		super.experience = 0;
 		super.strength = atkdmg;
-		super.dexterity = dex;
+		super.endurance = dex;
 		super.speed = speed;
 	}
 */
@@ -19,7 +19,7 @@ public class Monster extends Mob{
 	public int health(){return super.health;}
 	public int level(){return super.level;}
 	public int experience(){return super.experience;}
-	public int dexterity(){return super.dexterity;}
+	public int endurance(){return super.endurance;}
 	public int speed(){return super.speed;}
 	public int strength(){return super.strength;}
 	public int maxHealth(){return super.maxHealth;}
@@ -30,7 +30,7 @@ public class Monster extends Mob{
 	public void setExperience(int n){super.experience = n;}
 	public void setLevel(int n){super.level = n;}
 	public void setStrength(int n){super.strength = n;}
-	public void setDexterity(int n){super.dexterity = n;}
+	public void setEndurance(int n){super.endurance = n;}
 	public void setSpeed(int n){super.speed = n;}
 	public void setMaxHealth(int n){super.maxHealth = n;}
 	public void setName(String s){super.name = s;}
@@ -38,8 +38,8 @@ public class Monster extends Mob{
 //Monster Templates
 /*
 	Kobold - Object (Attacks fast (more attacks per turn), low health)
-	Spider - Object (High Speed, Low Health, Low Dexterity)
-	Golem - Object (High Health, High Dexterity, Low Speed)
+	Spider - Object (High Speed, Low Health, Low Endurance)
+	Golem - Object (High Health, High Endurance, Low Speed)
 	**QuestBoss** Dragon - Object (+50 on all stats)
 	**QuestBoss** The_Predator - Object (+75 on all stats except speed, +150 speed)
 	**QuestBoss** The_GateKeeper - Object [SPECIAL CONDITION: only appears on last level of labyrinth] 
@@ -56,7 +56,7 @@ public class Monster extends Mob{
 		if (super.strength > 88){
 			super.strength = 88;
 		}
-		super.dexterity = 5 + 2 * l;
+		super.endurance = 5 + 2 * l;
 		super.speed = 15 + l;
 		if (super.speed > 50) {
 			super.speed = 50;
@@ -74,7 +74,7 @@ public class Monster extends Mob{
                 if (super.strength > 82){
                         super.strength = 82;
                 }
-		super.dexterity = 1 + 2 * l;
+		super.endurance = 1 + 2 * l;
 		super.speed = 15 + 2 * l;
 		if (super.speed > 50) {
                         super.speed = 50;
@@ -89,7 +89,7 @@ public class Monster extends Mob{
 		super.level = l;
 		super.experience = 0;
 		super.strength = 7 + 2 * l;
-		super.dexterity = 8 + 2 * l;
+		super.endurance = 8 + 2 * l;
 		super.speed = 2 + l;
 		if (super.speed > 80) {
                         super.speed = 80;
@@ -107,7 +107,7 @@ public class Monster extends Mob{
 		super.level = l;
 		super.experience = 0;
 		super.strength = 28 + l;
-		super.dexterity = 10 + l;
+		super.endurance = 10 + l;
 		super.speed = 20;
 	}
 
@@ -118,7 +118,7 @@ public class Monster extends Mob{
 		super.level = l;
 		super.experience = 0;
 		super.strength = 75 + l;
-		super.dexterity = 5 + l;
+		super.endurance = 5 + l;
 		super.speed = 55;
 	}
 
@@ -129,7 +129,7 @@ public class Monster extends Mob{
 		super.level = l;
 		super.experience = 0;
 		super.strength = 9001;
-		super.dexterity = 9001;
+		super.endurance = 9001;
 		super.speed = 0;
 	}
 }

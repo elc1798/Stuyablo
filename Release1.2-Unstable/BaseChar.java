@@ -11,7 +11,7 @@ public class BaseChar extends Mob{
 		super.level = l;
 		super.experience = 0;
 		super.strength = atkdmg;
-		super.dexterity = dex;
+		super.endurance = dex;
 		super.speed = speed;
 	}
 */
@@ -20,7 +20,7 @@ public class BaseChar extends Mob{
 	public int health(){return super.health;}
 	public int level(){return super.level;}
 	public int experience(){return super.experience;}
-	public int dexterity(){return super.dexterity;}
+	public int endurance(){return super.endurance;}
 	public int speed(){return super.speed;}
 	public int strength(){return super.strength;}
 	public int maxHealth(){return super.maxHealth;}
@@ -34,7 +34,7 @@ public class BaseChar extends Mob{
 	public void setExperience(int n){super.experience = n;}
 	public void setLevel(int n){super.level = n;}
 	public void setStrength(int n){super.strength = n;}
-	public void setDexterity(int n){super.dexterity = n;}
+	public void setEndurance(int n){super.endurance = n;}
 	public void setSpeed(int n){
 		if (n > 50) {
 			super.speed = 50;
@@ -51,10 +51,10 @@ public class BaseChar extends Mob{
 
 //BaseChar types:
 /*
-	Warrior - Object (High Attack Damage, High Dexterity, Low Speed)
-	Mage - Object (High speed, High Attack Damage, Low Dexterity)
-	Archer - Object (High Speed, Very high attack damage, low health, low dexterity)
-	Dwarf - Object (High Health, Very High Dexterity, Very Low Speed, Slightly Low Attack Damage)
+	Warrior - Object (High Attack Damage, High Endurance, Low Speed)
+	Mage - Object (High speed, High Attack Damage, Low Endurance)
+	Archer - Object (High Speed, Very high attack damage, low health, low endurance)
+	Dwarf - Object (High Health, Very High Endurance, Very Low Speed, Slightly Low Attack Damage)
 */
 	public void warriorTemplate(String s){
 		super.health = 100;
@@ -63,7 +63,7 @@ public class BaseChar extends Mob{
 		super.level = 1;
 		super.experience = 0;
 		super.strength = 8;
-		super.dexterity = 5;
+		super.endurance = 5;
 		super.speed = 2;
 		super.type = "WARRIOR";
 		super.xcor = 18;
@@ -77,7 +77,7 @@ public class BaseChar extends Mob{
 		super.level = 1;
 		super.experience = 0;
 		super.strength = 8;
-		super.dexterity = 1;
+		super.endurance = 1;
 		super.speed =  4;
 		super.type = "MAGE";
 		super.xcor = 18;
@@ -91,7 +91,7 @@ public class BaseChar extends Mob{
 		super.level = 1;
 		super.experience = 0;
 		super.strength = 13;
-		super.dexterity = 0;
+		super.endurance = 0;
 		super.speed = 5;
 		super.type = "ARCHER";
 		super.xcor = 18;
@@ -105,7 +105,7 @@ public class BaseChar extends Mob{
 		super.level = 1;
 		super.experience = 0;
 		super.strength = 7;
-		super.dexterity = 9;
+		super.endurance = 9;
 		super.speed = 1;
 		super.type = "DWARF";
 		super.xcor = 18;
@@ -116,7 +116,7 @@ public class BaseChar extends Mob{
 		System.out.println("Class:         " + super.type);
 		System.out.println("Health:        " + super.health);
 		System.out.println("Strength:      " + super.strength);
-		System.out.println("Dexterity:     " + super.dexterity);
+		System.out.println("Endurance:     " + super.endurance);
 		System.out.println("Speed:         " + super.speed);
 		System.out.println("=====================================");
 	}
