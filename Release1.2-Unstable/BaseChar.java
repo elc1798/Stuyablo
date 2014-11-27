@@ -30,7 +30,12 @@ public class BaseChar extends Mob{
 	public int ycor(){return super.ycor;}
 
 //Data Setters
-	public void setHealth(int n){super.health = n;}
+	public void setHealth(int n){
+		if (n < 0){
+			n = 0;
+		}
+		super.health = n;
+	}
 	public void setExperience(int n){super.experience = n;}
 	public void setLevel(int n){super.level = n;}
 	public void setStrength(int n){super.strength = n;}

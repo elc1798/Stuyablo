@@ -26,7 +26,12 @@ public class Monster extends Mob{
 	public String name(){return super.name;}
 
 //Data Setters
-	public void setHealth(int n){super.health = n;}
+	public void setHealth(int n){
+		if (n < 0) {
+			n = 0;
+		}
+		super.health = n;
+	}
 	public void setExperience(int n){super.experience = n;}
 	public void setLevel(int n){super.level = n;}
 	public void setStrength(int n){super.strength = n;}

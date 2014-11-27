@@ -227,7 +227,7 @@ public class RoomGen{
 			}
 			else if (getUp(trans.xcor() , trans.ycor()).equals("s")){
 				m = new Monster();
-				consoleMessage = "You fith a spider.";
+				consoleMessage = "You fight a spider.";
 				m.spiderTemplate("Spider" , lev);
 				Battle b = new Battle(localCH , m , gameHost.getStage());
 				room[trans.ycor] = room[trans.ycor].substring(0,trans.xcor) + " " + room[trans.ycor].substring(trans.xcor + 1);

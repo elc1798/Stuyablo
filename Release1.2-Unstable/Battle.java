@@ -11,38 +11,71 @@ public class Battle extends World{
                 	System.out.println(ch.name + " health: " + ch.health + "/" + ch.maxHealth);
                 	System.out.println(mon.name + " health: " + mon.health + "/" + mon.maxHealth);
 			attack1(ch , mon);
-			try{
-                                Thread.sleep(450);
-                        } catch(Exception e) {}
+			GameController.pauseSleep(450);
 			if (ch.health() > 0 && mon.health() > 0){
 				attack2(mon , ch);
-				try{
-                                	Thread.sleep(1720);
-                        	} catch(Exception e) {}
-				System.out.print("\033\143");
+				GameController.pauseSleep(1720);
+				GameController.clrConsole();
 			}
 		}
 	}
 
-        public Battle(BaseChar ch , Monster mon){
+        public Battle(BaseChar ch , Monster mon){ // This constructor is not implemented in the game, but is used for testing
 		gamestage = 0; //Prevents crash
                 while (ch.health() > 0 && mon.health() > 0) {
                         System.out.println(ch.name + " health: " + ch.health + "/" + ch.maxHealth);
                         System.out.println(mon.name + " health: " + mon.health + "/" + mon.maxHealth);
                         attack1(ch , mon);
-                        try{
-                                Thread.sleep(450);
-                        } catch(Exception e) {}
+                        GameController.pauseSleep(450);
                         if (ch.health() > 0 && mon.health() > 0){
                                 attack2(mon , ch);
-                                try{
-                                        Thread.sleep(1720);
-                                } catch(Exception e) {}
-                                System.out.print("\033\143");
+                                GameController.pauseSleep(1720);
+                                GameController.clrConsole();
                         }
                 }
         }
 
+	private int sumHealth(BaseChar[] playerParty){
+		int total = 0;
+		for (int i = 0; i < playerParty.length; i++){
+			if (playerParty[i].health < 0) {
+				playerParty[i].setHealth(0);
+			}
+			total += playerParty[i].health;
+		}
+		return total;
+	}
+
+	private int sumHealth(Monster[] monsterParty){
+		int total = 0;
+		for (int i = 0; i < monsterParty.length; i++){
+			if (monsterParty[i].health < 0) {
+				monsterParty[i].setHealth(0);
+			}
+			total += monsterParty[i].health;
+		}
+		return total;
+	}
+
+	public Battle(BaseChar[] playerParty , Monster mon , int x){
+		gamestage = x;
+		int partyHealth = 0;
+		for (int i = 0; i < playerParty.length; i++){
+			System.out.println(playerParty[i].name + " health: " + playerParty[i].health + "/" + playerParty[i].maxHealth);
+		}
+		System.out.println(mon.name + " health: " + mon.health + "/" + mon.maxHealth);
+		//Get sum of healths (Minimum health is hard capped at 0)
+		while (sumHealth(playerParty) > 0 && mon.health > 0){
+			for (int i = 0; i < playerParty.length; i++){
+				attack1(playerParty[i] , mon);
+				attack2(mon , playerParty[i]);
+			}
+		}
+	}
+
+	public Battle(BaseChar[] playerParty , Monster[] mon , int x){
+
+	}
 
 	public void endScreenMonster(BaseChar victor){
 		System.out.println("You defeated the monster!");
@@ -81,7 +114,7 @@ public class Battle extends World{
 
 	public void attack1(BaseChar attacker , Monster defender){
 		System.out.flush();
-		System.out.println("You have engaged in battle against " + defender.name);
+		System.out.println(attacker.name + " has engaged in battle against " + defender.name);
 		System.out.println("1 - Basic Attack: Base Damage, Slight chance to heal on hit.");
 		System.out.println("2 - Hail Mary: Slight chance to do double damage, but will miss otherwise");
 		System.out.println("3 - Class Special: Use your class's signature move!");
@@ -247,17 +280,17 @@ public class Battle extends World{
 			damageTaken = Math.abs(damageTaken) + (int)(gamestage / 3);
 			defender.setHealth(defender.health - damageTaken);
 			System.out.println(defender.name + " lost " + damageTaken + " health.");
-			if (attacker.name().toUpperCase().equals("SPIDER") && gamestage > 40) {
+			if (attacker.name().toUpperCase().equals("SPIDER") && gamestage > 10) {
 				int poisonDmg = (int)(gamestage / 10);
 				System.out.println("Spider has toxic fangs! You have taken " + poisonDmg +  " points of poison damage!");
 				defender.setHealth(defender.health - poisonDmg);
 			}
-			if (attacker.name().toUpperCase().equals("KOBOLD") && gamestage > 40) {
-				attacker.setStrength(attacker.strength() + gamestage - 40);
+			if (attacker.name().toUpperCase().equals("KOBOLD") && gamestage > 10) {
+				attacker.setStrength(attacker.strength() + gamestage - 10);
 				System.out.println("Kobold grows in strength...");
 			}
-			if (attacker.name().toUpperCase().equals("GOLEM") && gamestage > 40) {
-				attacker.setEndurance(attacker.endurance() + gamestage - 40);
+			if (attacker.name().toUpperCase().equals("GOLEM") && gamestage > 10) {
+				attacker.setEndurance(attacker.endurance() + gamestage - 10);
 				System.out.println("Golem armor hardens...");
 			}
 			System.out.println(defender.name + " health: " + defender.health + "/" + defender.maxHealth);

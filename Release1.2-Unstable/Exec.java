@@ -4,7 +4,7 @@ import java.io.*;
 public class Exec{
 
 	public static void newGame(){
-		
+		BaseChar Harry = new BaseChar();
 		Scanner sc = new Scanner(System.in);
 		GameController.clrConsole();
 		System.out.println("Welcome " + Harry.name + ".");
