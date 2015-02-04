@@ -74,7 +74,18 @@ public class Battle extends World{
 	}
 
 	public Battle(BaseChar[] playerParty , Monster[] mon , int x){
-
+		gamestage = x;
+		int partyHealth = 0;
+		for (int i = 0; i < playerParty.length; i++){
+			System.out.println(playerParty[i].name + " health: " + playerParty[i].health + "/" + playerParty[i].maxHealth);
+		}
+		System.out.println("===================================");
+		for (int i = 0; i < mon.length; i++){
+			System.out.println(mon[i].name + " health: " + mon[i].health + "/" + mon[i].maxHealth);
+		}
+		while (sumHealth(playerParty) > 0 && sumHealth(mon) > 0){
+			
+		}
 	}
 
 	public void endScreenMonster(BaseChar victor){
